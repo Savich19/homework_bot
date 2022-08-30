@@ -119,14 +119,14 @@ def main():
                             if new_status != last_status:
                                 send_message(bot, message)
                                 logger.info(
-                                    'Статус дз изменился. Сообщение отправлено')
+                                    'Статус дз изменен. Сообщение отправлено')
                             else:
                                 logger.info(
-                                    'Статус дз тот же. Сообщение не отправлено')
+                                    'Статус дз тот же. Сообщение не отправим')
                         else:
                             send_message(bot, message)
                             logger.info(
-                                'Найдена новая домашка. Сообщение отправлено!')
+                                'Найдена новое дз. Сообщение отправлено!')
                         last_homeworks[homework_name] = homework['status']
                     current_timestamp = response.get(
                         'current_date', current_timestamp)
@@ -135,11 +135,11 @@ def main():
                 logger.error(message)
                 send_message(bot, message)
             except IndexError:
-                message = 'Обращение к элементу списка с несуществующим индексом'
+                message = 'Запрос к элементу списка с несуществующим индексом'
                 logger.error(message)
                 send_message(bot, message)
             except KeyError:
-                message = 'Ключ словаря не найден в наборе существующих ключей'
+                message = 'Ключ словаря не найден в наборе ключей'
                 logger.error(message)
                 send_message(bot, message)
             except NotList:
