@@ -95,8 +95,8 @@ def main():
     bot = telegram.Bot(token=TELEGRAM_TOKEN)
     current_timestamp = int(time.time())
 
-    # message = 'Добрый день, Александр!'
-    # send_message(bot, message)
+    message = 'Добрый день, Александр!'
+    send_message(bot, message)
 
     last_homeworks = {}
 
@@ -120,9 +120,6 @@ def main():
                                 send_message(bot, message)
                                 logger.info(
                                     'Статус дз изменен. Сообщение отправлено')
-                            # else:
-                            #     logger.info(
-                            #         'Статус дз тот же. Смс не отправим')
                         else:
                             send_message(bot, message)
                             logger.info(
@@ -130,22 +127,6 @@ def main():
                         last_homeworks[homework_name] = homework['status']
                     current_timestamp = response.get(
                         'current_date', current_timestamp)
-            except NotTwoHundred:
-                message = f'Статус сайта Практикума: {response.status_code}'
-                # logger.error(message)
-                send_message(bot, message)
-            except IndexError:
-                message = 'Запрос к элементу списка с несуществующим индексом'
-                # logger.error(message)
-                send_message(bot, message)
-            except KeyError:
-                message = 'Ключ словаря не найден в наборе ключей'
-                # logger.error(message)
-                send_message(bot, message)
-            except NotList:
-                message = 'Полученный ответ - не список'
-                # logger.error(message)
-                send_message(bot, message)
             except Exception as error:
                 message = f'Сбой в работе программы: {error}'
                 logger.error(message)
