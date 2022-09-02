@@ -76,7 +76,7 @@ def parse_status(homework):
     """Получение статуса конкретной домашки."""
     homework_name = homework['homework_name']
     homework_status = homework['status']
-    if not homework_status in HOMEWORK_VERDICTS.keys():
+    if homework_status not in HOMEWORK_VERDICTS.keys():
         raise NotStatus('Статус домашки не известен')
     verdict = HOMEWORK_VERDICTS[homework_status]
     message = (
